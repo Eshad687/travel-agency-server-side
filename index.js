@@ -21,12 +21,12 @@ async function run() {
         const database = client.db('travel_agency');
         const eventCollection = database.collection('offerings');
 
-        //GET EVENTS API
-        // app.get('/events', async (req, res) => {
-        //     const cursor = eventCollection.find({});
-        //     const events = await cursor.toArray();
-        //     res.send(events);
-        // })
+        // GET OFFERS API
+        app.get('/offerings', async (req, res) => {
+            const cursor = eventCollection.find({});
+            const offers = await cursor.toArray();
+            res.send(offers);
+        })
 
     }
     finally {
