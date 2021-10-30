@@ -14,11 +14,11 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-console.log(uri);
+//console.log(uri);
 async function run() {
     try {
         await client.connect();
-        console.log('database connected')
+        // console.log('database connected')
         const database = client.db('travel_agency');
         const offersCollection = database.collection('offerings');
         const bookingCollection = database.collection('bookings')
@@ -75,7 +75,7 @@ async function run() {
         app.put('/bookings/:id', async (req, res) => {
             const id = req.params.id;
             const updatedBooking = req.body;
-            console.log(id, updatedBooking)
+            //console.log(id, updatedBooking)
             const filter = { _id: ObjectId(id) };
             const options = { upsert: true };
             const updateDoc = {
@@ -94,7 +94,7 @@ async function run() {
 
         app.delete('/bookings/:id', async (req, res) => {
             const id = req.params.id;
-            console.log(id)
+            //console.log(id)
             const query = { _id: ObjectId(id) };
             const result = await bookingCollection.deleteOne(query);
             // console.log('deleted count', result)
